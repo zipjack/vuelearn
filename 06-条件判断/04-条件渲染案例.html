@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+methods中changeCondition中的第一个this必须要有。
+<div id="app">
+    <span v-if="condition">用户账号</span>
+    <span v-else>用户邮箱</span>
+    <button @click="changeCondition">切换类型</button>
+    <button @click="condition = !condition">切换类型</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                condition: true
+            },
+            methods: {
+                changeCondition() {
+                    /*console.log(!this.condition)*/
+                    this.condition = !this.condition
+                   /* console.log(condition)
+                    return condition*/
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

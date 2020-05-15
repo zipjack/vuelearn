@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+.stop修饰符：阻止冒泡；
+.prevent修饰符：阻止默认事件；
+.{keyCode|keyAlias}只当事件是从特点键触发时才触发会带哦
+.native 监听组件根元素的原生事件
+.once只触发一次回调
+<div id="app">
+    <div @click="divClick">
+        hhhh
+        <button @click.stop="btnClick">按钮</button>
+    </div>
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="sumbitClick">
+    </form>
+    <!--    加上.enter只会监听enter键的事件-->
+    <input type="text" @keyup.enter="keyUP"/>
+
+    <button @click.once="btnClcik2">once监听</button>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            },
+            methods: {
+                btnClick() {
+                    console.log("btnClick");
+                },
+                divClick() {
+                    console.log("divClick");
+                },
+                sumbitClick() {
+                    console.log('sumbitClick');
+                },
+                keyUP() {
+                    console.log("keyUP");
+                },
+                btnClcik2(){
+                    console.log("btnClcik2");
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

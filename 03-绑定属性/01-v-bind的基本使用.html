@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind的基本使用</title>
+</head>
+<body>
+mustache语法是在元素的内容当中使用的，元素的属性中不能使用mustache语法。
+前面都是将值插入到我们模板的内容当中。
+但是，除了内容需要动态来决定外，某些属性我们也希望动态来绑定；
+比如动态绑定a元素的href属性；比如动态绑定img元素的src属性。
+这个时候我们可以使用v-bind指令：
+作用：动态绑定属性；
+缩写：:
+预期：any（with argument） Object(without argument)
+参数：attr OR Prop(optional)
+从服务器请求来的数据，一般都是在data当中进行中转。
+
+<div id="app">
+    <img v-bind:src="imgURl" alt="">
+    <a v-bind:href="ahref">谷歌一下</a>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                imgURl: 'https://img14.360buyimg.com/n1/s546x546_jfs/t1/108285/25/13554/506020/5ea1430cE5224bdff/5a9e4dad8e8c3952.jpg',
+                ahref: "http://www.baidu.com"
+            }
+        }
+    )
+</script>
+</body>
+</html>

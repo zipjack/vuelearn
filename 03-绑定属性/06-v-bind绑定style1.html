@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-v-bind绑定style1</title>
+</head>
+<body>
+我们可以来利用v-bind:style来绑定一些css内联样式。
+在写css属性名的时候，比如font-size：
+我们可以使用驼峰式 fontSize
+或短划线分割 ’font_size‘
+这里的key可以不加单引号，但是value必须加单引号。
+
+<div id="app">
+    <h2 v-bind:style="{fontSize:'509px'}">{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            }
+        }
+    )
+</script>
+</body>
+</html>

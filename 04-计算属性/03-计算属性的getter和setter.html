@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-计算属性的getter和setter</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                firstName: "Bert",
+                lastName: "Long"
+            },
+            //计算属性一般是没有set方法，只读属性，一般只写get
+            //注意这里面注释掉set,在赋值的时候会报错，即使你在下面重写了set
+            computed: {
+                fullName: {
+                    set: function () {
+                        console.log("zzzzz")
+                    },
+                    get: function () {
+                        return this.firstName + " " + this.lastName;
+                    }
+                }
+            }
+        }
+    )
+</script>
+计算属性改值会清空缓存。
+</body>
+</html>

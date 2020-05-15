@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-v-bind动态绑定class属性(数组语法)</title>
+    <style>
+        .active {
+            color: blue;
+        }
+
+        .line {
+            text-decoration: underline;
+        }
+
+        .title {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2 v-bind:class="['active','line']">{{message}}</h2>
+    <h2 v-bind:class="[active1,line2]">{{message}}</h2>
+    <h2 v-bind:class="getClasses()">{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                active1: "11111",
+                line2: "2222"
+            },
+            methods: {
+                getClasses: function () {
+                    return [this.active1, this.line2]
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

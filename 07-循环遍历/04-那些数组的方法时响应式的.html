@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--:key="item" 指定数组的key要是item并且唯一-->
+        <li v-for="item in letters">{{item}}</li>
+    </ul>
+    <button @click="btnClick">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                letters: ['a', 'b', 'c', 'd']
+            },
+            methods: {
+                btnClick() {
+                    //push方法
+                    /*this.letters.push('ac')*/
+                    //通过索引值改变数组中的元素,不是响应式的
+                    // this.letters[0]='aaa'
+                    //pop
+                    // this.letters.pop()
+                    //shift
+                    // this.letters.shift()
+                    //unshift()
+                    // this.letters.unshift("aaa")
+                    //splice(start,):删除/插入/替换元素
+                    //删除元素：第二个参数传入你要删除几个元素，如果没穿就是删除后面所有的元素
+                    //替换元素：传入第三个参数，就是要被替换的内容
+                    //插入元素：第二个参数传入0，并且后面插入要插入的参数
+                    //这个是插入的效果
+                    //this.letters.splice(1, 0, "n")
+                    //sort：排序
+                    //this.letters.sort()
+                    //reverse:反转
+                    //this.letters.reverse()
+                    //set(要修改的对象，索引值，修改后的值)
+                    Vue.set(this.letters,1,'z')
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

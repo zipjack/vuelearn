@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-v-text指令</title>
+</head>
+<body>
+v-text作用和Mustache比较相似，都是用于将数据显示在界面上。
+v-text通常情况下，接收一个string类型。
+<div id="app">
+    <h2>{{message}}</h2>
+    <h2 v-text="message"></h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            }
+        }
+    )
+</script>
+</body>
+</html>

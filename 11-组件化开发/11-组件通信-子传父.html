@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+子组件发送事件给父组件,父组件根据事件去发送请求.
+子传父:需要使用自定义事件来完成.
+什么时候需要自定义事件?
+1.当子组件需要向父组件传递数据时,就用到自定义事件.
+2.v-on不仅可以监听dom事件,也可以用于组件间的自定义事件.
+自定义事件的流程:
+1.在子组件中,通过$emit()来触发事件.
+2.在父组件中,通过v-on来监听子组件事件.
+
+
+
+<!--父组件模板-->
+<div id="app">
+    <!--步骤3,父组件监听子组件发射出来的自定义事件,即this.$emit('itemClick')中的itemClick事件收到消息-->
+    <!--此处监听事件也要驼峰写法转成中间划线写法-->
+<!--驼峰写法会有错误,此处直接改成中间划线的写法.或者在子组件发射出来itemclick,不要驼峰写法,此处为itemclick-->
+    <cpn @item-click="cpnClick"></cpn>
+</div>
+
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+        <button v-for="item in categories"
+                @click="btnClcik(item)">
+            {{item.name}}
+        </button>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    //1.子组件
+    const cpn = {
+        template: "#cpn",
+        data() {
+            return {
+                categories: [
+                    {
+                        id: '001',
+                        name: '热门推荐'
+                    },
+                    {
+                        id: '002',
+                        name: '手机数码'
+                    },
+                    {
+                        id: '003',
+                        name: '家用电器'
+                    },
+                    {
+                        id: '004',
+                        name: '电脑办公'
+                    }
+                ]
+            }
+        },
+        methods: {
+            btnClcik(item) {
+                console.log(item);
+                //通过事件与父组件进行通信,父组件需要监听这个事情
+                //通过在模板中监听itemClick事件,知道这个请求
+                //下一步转到步骤3
+                this.$emit('item-click',item)
+            }
+        }
+    }
+    //2.父组件
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            },
+            components: {
+                cpn
+            },
+            methods: {
+                cpnClick(item) {
+                    console.log("cpnClick",item);
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

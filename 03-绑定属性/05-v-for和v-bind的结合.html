@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-v-for和v-bind的结合（作业）</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(m,index) in movies" :class="{active:currentIndex===index}" v-on:click="liClick(index)">{{m}}</li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                movies: ['肖申克的救赎', "教父", "受益人", "西游降魔篇", "进击的巨人"],
+                currentIndex: 0
+            },
+            methods: {
+                liClick: function (index) {
+                    this.currentIndex = index;
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

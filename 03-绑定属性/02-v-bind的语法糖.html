@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-v-bind的语法糖</title>
+</head>
+<body>
+
+
+<div id="app">
+    <img :src="imgURl" alt="">
+</div>
+<!--     使用:的写法-->
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                imgURl: 'https://img14.360buyimg.com/n1/s546x546_jfs/t1/108285/25/13554/506020/5ea1430cE5224bdff/5a9e4dad8e8c3952.jpg',
+            }
+        }
+    )
+</script>
+
+</body>
+</html>

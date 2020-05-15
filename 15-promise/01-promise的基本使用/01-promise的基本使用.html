@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+promise是异步编程的一种解决方案。
+VueX是一个专为Vue.js应用程序开发的状态管理模式。
+他采用集中存储管理应用的所有组件的状态，并以响应的规则保证状态以一种可预测的方式发生变化。
+Vuex也集成到Vue官方调试工具devtools extension，提供了注入零配置的time-travel调试、状态快照导入导出等高级调试功能。
+状态管理：可以简单将其看成把需要多个组件共享的变量全部存储在一个对象里面。然后将这个对象放在顶层的vue实例中，让其他组件可以使用。
+
+<script>
+    const name = 'zyd';
+    console.log(name);
+
+    //参数本身是一个函数
+    //resvole.reject本身也是函数
+    new Promise((resolve,reject)=>{
+        //第一次网络请求的代码
+        setTimeout(()=>{
+            resolve()
+        },1000)
+
+    }).then(()=>{
+        //第一次拿到结果的处理代码
+        console.log('hello world');
+        console.log('hello world');
+        console.log('hello world');
+
+        return new Promise((resolve,reject)=>{
+            //第二次网络请求的代码
+            setTimeout(()=>{
+                resolve()
+            },1000)
+        })
+    }).then(()=>{
+        console.log('hello vuejs');
+        console.log('hello vuejs');
+        console.log('hello vuejs');
+        return new Promise((resolve,reject)=>{
+            //第三次网络请求的代码
+            setTimeout(()=>{
+                resolve()
+            })
+        })
+    }).then(()=>{
+        //第三次处理的代码
+        console.log('hello python');
+        console.log('hello python');
+        console.log('hello python');
+    })
+</script>
+</body>
+</html>

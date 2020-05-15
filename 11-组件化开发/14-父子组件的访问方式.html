@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+有时候我们需要父组件直接访问子组件，子组件直接访问父组件，或者是子组件访问根组件。
+父组件访问子组件：使用$children或$refs.
+子组件访问父组件：使用$parent
+我们先来看下$children的访问：
+this.$children是一个数组类型，它包含所有子组件对象。
+我们这里通过一个遍历，去除所有子组件的message状态。
+<hr>
+<div id="app">
+    <cpn></cpn>
+    <cpn ref="zyd"></cpn>
+    <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn">
+    <div>
+        我是子组件
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            },
+            methods: {
+                btnClick(){
+                    console.log(this.$children);
+                    this.$children[0].showMessage();
+                    console.log(this.$children[0].name);
+                    // $refs => 对象类型，默认是一个空的对象 ref='bbb'
+                    console.log(this.$refs.zyd.name);
+                }
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data(){
+                        return {
+                            name:'children component'
+                        }
+                    },
+                    methods: {
+                        showMessage() {
+                            console.log("showMessage");
+                        }
+                    }
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

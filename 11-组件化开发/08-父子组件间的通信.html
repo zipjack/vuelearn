@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+在开发中，往往一些数据确实需要从上层传递到下层：
+比如在一个页面中，我们从服务器请求到了很多数据，
+其中一部分数据，并非是我们整个页面的大组件来展示的，
+而是需要下面的子组件进行展示的。
+这个时候，并不会让子组件再次发送一个网络请求，
+而是直接让大组件（父组件）将数据传递个小组件（子组件）。
+如何进行父子组件间的通信呢？
+1.通过props向子组件传递数据。
+2.通过事件向父组件发送消息。
+<hr>
+
+<div id="app">
+    <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <p>{{cmovies}}</p>
+        <h2>{{cmessage}}</h2>
+        <ul>
+            <li v-for="item in cmovies">{{item}}</li>
+        </ul>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //这个是子组件
+    //父传子，props
+    //使用props得属性，对应属性得值填父组件得变量，即可通过props获取子组件得值
+    //在使用得时候在子组件中使用v-bind绑定父组件得变量得名字
+    //不使用v-bind的话会把绑定的东西当成是一个字符串，而非变量
+    //父传子，子模板props里的变量名不能有大写字母
+    //data一旦写了，就必须要有个返回值
+    const child_cpn = {
+        template: '#cpn',
+        props: ['cmovies','cmessage'],
+        data() {
+            return {
+
+            }
+
+        },
+        methods: {}
+    }
+
+    //这个是父组件
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                movies: ['大鱼海棠', '肖申克的救赎', '教父', '西游释厄传']
+            },
+            components: {
+                'cpn': child_cpn
+            }
+        }
+    )
+</script>
+</body>
+</html>

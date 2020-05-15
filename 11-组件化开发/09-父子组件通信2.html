@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>props的对象写法</h1>
+props:{
+cmovies:Array,
+cmessage:String
+}
+这样的写法，还能对数据做一些类型的限制。
+<hr>
+<div id="app">
+    <!--    将父组件中的数据绑定到子组件的props中的属性中-->
+<!--    <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>-->
+
+    <!--<cpn :cmessage="message" ></cpn>-->
+    <cpn :cmessage="message"  :cmovies="movies"></cpn>
+</div>
+
+<template id="mycpn">
+    <div>
+        <p>{{cmovies}}</p>
+        <h2>{{cmessage}}</h2>
+        <ul>
+            <li v-for="item in cmovies">{{item}}</li>
+        </ul>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const child_cpn = {
+        template: '#mycpn',
+        //props: ['cmovies', 'cmessage'],
+        props:{
+            //1.类型的限制
+            // cmovies:Array,
+            // cmessage:String
+
+            //2.提供一些默认值
+            cmessage:{
+                type:String,
+                default:"2020-05-07",
+                requied:true
+            },
+            //类型是一个对象或者数组时，默认值必须是一个函数
+            cmovies:{
+                type:Array,
+                default(){
+                    return []
+                }
+            }
+        },
+        data() {
+            return {}
+
+        },
+        methods: {}
+    }
+
+    //这个是父组件
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                movies: ['大鱼海棠', '肖申克的救赎', '教父', '西游释厄传']
+            },
+            components: {
+                //将子组件在父组件中注册
+                'cpn': child_cpn
+            }
+        }
+    )
+</script>
+</body>
+</html>

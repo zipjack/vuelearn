@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+组件不可以访问Vue实例数据。
+组件算是一个单独功能模块的封装：这个模块有属于自己的HTML摸板，也应该有属于自己的数据data.
+组件不能直接访问Vue实例中的data。
+组件内部有一个地方保存自己的数据,就是data属性（也可以有methods属性）。
+只是这个data属性必须是一个函数，而且这个函数返回一个对象，对象内部保存着数据。
+
+
+<div id="app">
+    <cpn1></cpn1>
+    <hr>
+    <cpn2></cpn2>
+</div>
+<!--1.script标签，注意：类型必须是text/x-template-->
+<script type="text/x-template" id="cpn1">
+    <div>
+        <h2>我是标题</h2>
+        <p>我是内容，哈哈哈哈</p>
+        <h1>{{title}}</h1>
+    </div>
+
+</script>
+
+<!--2.template标签-->
+<template id="cpn2">
+    <div>
+        <h2>我是标题666</h2>
+        <p>我是内容，哈哈哈哈</p>
+        <h1>{{title}}</h1>
+        <h2>{{age}}</h2>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    // 1.注册一个全局组件
+    Vue.component('cpn1', {
+        template: '#cpn1',
+        data() {
+            return {
+                title: 'zzzyyyddd'
+            }
+        }
+        //template:'#cpn2'
+    })
+
+    //2.注册一个局部组件
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            },
+            components: {
+                'cpn2': {
+                    template: "#cpn2",
+                    data() {
+                        return {
+                            title: "dddyyyzzz",
+                            age:123
+                        }
+                    }
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

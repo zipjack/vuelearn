@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+组件的使用范围：在vue实例的管理范围内。
+<div id="app">
+    <!--3.使用,组件必须挂载在某个Vue实例下，否则它不会生效-->
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    //1.创建组件构造器对象,传入的template代表我们自定义组件的模板，该模板就是在使用到组件的地方，需要显示的html代码，
+    // 事实上，这种写法在vue2.x中已经看不到了，他会直接使用下面讲到的语法糖
+    const cpnC = Vue.extend({
+        template: `<div>
+            <h2>我是标题</h2>
+            <p>我是内容，哈哈哈</p>
+            <p>我是内容，呵呵呵</p>
+
+</div>`
+    })
+    //2.注册组件 ，带哦用Vue.component()是将刚才的组件构造器注册为一个组件，并且给他起一个组件的标签名称，
+    // 所以需要传递两个参数：1.注册组件的标签名2.组件构造器
+    Vue.component('my-cpn', cpnC)
+
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            }
+        }
+    )
+</script>
+</body>
+</html>

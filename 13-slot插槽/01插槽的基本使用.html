@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+slot插槽：比如usb插槽。插槽的目的是让我们原来的设备具备更多的扩展性。
+组件的插槽：组件的插槽也是为了我们封装的组件更加具有扩展性，让使用者可以决定组件内部的一些内容到底展示什么。
+移动网站中的导航栏。
+<hr>
+<!--在使用的时候，在组件中插入东西到插槽当中。-->
+<div id="app">
+    <cpn></cpn>
+    <cpn>
+        <button>按钮</button>
+    </cpn>
+    <!--如果有多个值，同时放入到组件进行替换时，一起作为替换元素-->
+    <cpn>
+        <a href="http://www.baidu.com">百度</a>
+        <p>我是p标签</p>
+    </cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h2 align="center">我是组件-标题</h2>
+        <p align="center">我是组件-内容</p>
+        <!--slot使得组件具有扩展性,插槽中可以指定默认值-->
+        <slot><span>我是span</span></slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            },
+            components: {
+                cpn: {
+                    template: "#cpn"
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>

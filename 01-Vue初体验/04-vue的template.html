@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-vue的template</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！"
+            }
+        }
+    )
+</script>
+模板语法：
+插值操作：参见02-01
+</body>
+</html>

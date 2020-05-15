@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-vue计数器</title>
+</head>
+<body>
+<div id="app">
+    <h2>当前计数：{{counter}}</h2>
+    <!--语法糖：简写-->
+    <!-- 定义监听事件的形式：
+     <button v-on:click="counter++">+</button>
+     <button v-on:click="counter&#45;&#45;">-</button>
+     -->
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            counter: 0,
+        },
+        methods: {
+            add: function () {
+                console.log("add被执行");
+                this.counter++;
+            },
+            sub: function () {
+                console.log("sub被执行");
+                this.counter--;
+
+            }
+        }
+    })
+</script>
+响应式里面时做了一个代理的，后面会详细讲解为什么在data对象里面的数据counter，可以直接
+用this取出来，虽然this代表的时app对象。
+新的属性：methods，该属性用于在vue对象中定义方法。
+新的指令：@click，该指令用于监听某个元素的点击事件，并且需要指定当发生点击时，执行的方法（方法通常是methods中定义的方法）
+vue的MVVM：
+Model ViewModel View
+view层：
+视图层；在我们前端开发中，通常就是DOM层；主要的作用是给用户展示各种信息。
+Model层：
+数据层;数据可能是我们固定的死数据，更多的是来自我们服务器，从网络上请求下来的数据。
+在我们计数器的案例中，就是后面抽取出来的obj，当然，里面的数据可能没有这么简单。
+viewmodel层：
+视图模型层；视图模型层是view和model沟通的桥梁。一方面它实现了Data Binding,也就是数据绑定，
+将model的改变实时的反应到view中。另一方面它实现了dom listener，也就是dom监听，当dom发生一些
+事件（点击、滚动、touch等）时，可以监听到，并在需要的情况下改变对应的Data。
+创建Vue实例的时候，传入了一个对象options。
+现在有如下的选项：
+el:类型：string|Html Element。作用：决定之后Vue实例会管理哪一个DOM/
+data:类型：Object|Function. 作用：Vue实例对应的数据对象。
+methods:类型：{[key:string]:Function}作用:定义属于Vue的一些方法，可以在其他地方调用也可以在指令中使用。
+生命周期：事物从诞生到消亡的整个过程。
+
+</body>
+</html>

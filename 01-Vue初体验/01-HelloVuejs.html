@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01HelloVuejs</title>
+</head>
+<body>
+
+<div id="app"><h1 align="center">{{message}}</h1>
+    <h2 align="center">{{name}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    //let（变量）/const（常量）
+    //创建了vue实例，用来挂载元素。
+    const app = new Vue({
+        el: "#app",//用于挂载要管理的元素
+        data: {//定义数据
+            message: "你好啊，南京栖霞课！",
+            name: "ztd"
+        }
+    })
+</script>
+传统的js是命令式编程范式，一步步告诉程序去做什么事情。
+vue的编程范式：声明式编程，数据和声明完全分离。
+创建Vue对象的时候，传入了一些options：{}
+①：{}中包含了el属性：该属性决定了这个vue对象挂载到哪一个元素上，
+很明显我们这里是挂载到了id为app的元素上。
+②：{}中包含了data属性：该属性中通常会存储一些数据，这些数据可以是我们直接定义出来的，比如像上面这样。
+也可能是来自网络，从服务器加载的。
+</body>
+</html>

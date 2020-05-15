@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+windows 下 webstorm 格式化代码的快键键 Ctrl+Alt+l。
+<div id="app">
+    <h2>{{counter}}</h2>
+    <!--<button v-on:click="counter++">+</button>
+    <button v-on:click="counter&#45;&#45;">-</button>-->
+    <button v-on:click="increament">+</button>
+    <button v-on:click="decreament">-</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                counter: 0,
+
+            },
+            methods: {
+                increament() {//这种写法，是对象的增强写法，等于increment:function()的写法
+                    this.counter++;
+                },
+                decreament() {
+                    this.counter--;
+                }
+
+            }
+        }
+    )
+</script>
+</body>
+</html>

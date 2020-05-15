@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-Mustache语法</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <!-- mustache语法不仅可以直接写变量，还可以写简单的表达式-->
+    <h2>{{firstName+lastName}}</h2>
+    <h2>{{counter*2}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue(
+        {
+            el: "#app",
+            data: {
+                message: "你好啊，栖霞课！",
+                firstName: 'zyd',
+                lastName: 'Bert',
+                counter: 100
+            }
+        }
+    )
+</script>
+</body>
+</html>
